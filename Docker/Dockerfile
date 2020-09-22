@@ -219,7 +219,7 @@ RUN ./bazel-0.22.0-installer-linux-x86_64.sh --user
 WORKDIR /home/classifier
 
 #For quickly grabbing original source code
-RUN git clone https://github.com/randaller/cnn-rtlsdr
+RUN git clone https://github.com/marcella-benner/cnn-kerberossdr
 
 WORKDIR /home/classifier/cnn-rtlsdr
 
