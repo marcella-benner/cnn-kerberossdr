@@ -227,4 +227,4 @@ WORKDIR /home/classifier/cnn-rtlsdr
 #ENTRYPOINT ["python3"]
 #CMD ["predict_scan.py"]
 
-#CMD /bin/bash
+CMD /bin/bash
