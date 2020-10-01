@@ -50,10 +50,10 @@ sdr.gain = 'auto'
 
 # collect_samples(422600000, "tetra")
 collect_samples(95000000, "wfm")
-collect_samples(104000000, "wfm")
-collect_samples(942200000, "gsm")
-collect_samples(147337500, "dmr")
-collect_samples(49250000, "tv")
+#collect_samples(104000000, "wfm")
+#collect_samples(942200000, "gsm")
+#collect_samples(147337500, "dmr")
+#collect_samples(49250000, "tv")
 
 # collect "other" class training data
 for freq in range(112000000, 174000000, 50000):
