@@ -43,7 +43,7 @@ classes = [d for d in os.listdir('training_data') if os.path.isdir(os.path.join(
 num_classes = len(classes)
 
 sess = tf.Session()
-saver = tf.train.import_meta_graph('rtlsdr-model.meta')
+saver = tf.train.import_meta_graph('model/rtlsdr-model.meta')
 saver.restore(sess, tf.train.latest_checkpoint('./'))
 
 graph = tf.get_default_graph()

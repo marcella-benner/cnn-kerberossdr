@@ -135,7 +135,7 @@ def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
 
 saver = tf.train.Saver()
 # loading pre-trained model to continue training
-if (os.path.exists('checkpoint')):
+if (os.path.exists('model/checkpoint')):
     saver.restore(session, tf.train.latest_checkpoint('./'))
 
 for i in range(0, 25000):
@@ -153,4 +153,4 @@ for i in range(0, 25000):
         epoch = int(i / int(data.train.num_examples / batch_size))
 
         show_progress(epoch, feed_dict_tr, feed_dict_val, val_loss)
-        saver.save(session, './rtlsdr-model')
+        saver.save(session, './model/rtlsdr-model')

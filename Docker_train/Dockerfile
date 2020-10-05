@@ -215,12 +215,10 @@ RUN ./bazel-0.22.0-installer-linux-x86_64.sh --user
 WORKDIR /home/classifier
 
 #For quickly grabbing original source code
-RUN git clone https://github.com/marcella-benner/cnn-kerbossdr
+RUN git clone https://github.com/marcella-benner/cnn-kerberossdr
 
-WORKDIR /home/classifier/cnn-kerberossdr
+WORKDIR /home/classifier/cnn-kerberossdr/
 
 #For automatically executing scripts upon startup
 ENTRYPOINT ["python3"]
 CMD ["train.py"]
-
-#CMD /bin/bash

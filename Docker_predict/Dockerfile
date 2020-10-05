@@ -222,5 +222,3 @@ WORKDIR /home/classifier/cnn-kerberossdr
 #For automatically executing scripts upon startup
 ENTRYPOINT ["python3"]
 CMD ["predict_scan.py"]
-
-#CMD /bin/bash
