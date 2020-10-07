@@ -135,8 +135,8 @@ def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
 
 saver = tf.train.Saver()
 # loading pre-trained model to continue training
-if (os.path.exists('model/checkpoint')):
-    saver.restore(session, tf.train.latest_checkpoint('./'))
+if (os.path.exists('./model/checkpoint')):
+    saver.restore(session, tf.train.latest_checkpoint('./model'))
 
 for i in range(0, 25000):
 
