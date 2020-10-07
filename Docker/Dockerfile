@@ -26,10 +26,11 @@ RUN make
 RUN make install
 RUN ldconfig
 
-#RUN mkdir classifier
+RUN mkdir classifier
+
 #copy these into image
-#COPY /libusb-1.0.dll /home/classifier
-#COPY /rtlsdr.dll /home/classifier
+COPY /libusb-1.0.dll /home/classifier
+COPY /rtlsdr.dll /home/classifier
 
 RUN apt-get -y install python3.7 \
     python3-pip
@@ -206,6 +207,9 @@ RUN pip3 install unicodecsv==0.14.1 \
 #solves an issue with protobuf
 RUN pip3 install -U protobuf
 
+#For editing within Docker
+RUN apt-get install -y vim
+
 RUN apt-get install -y wget
 RUN apt-get install -y pkg-config zip g++ zlib1g-dev unzip python
 RUN wget https://github.com/bazelbuild/bazel/releases/download/0.22.0/bazel-0.22.0-installer-linux-x86_64.sh
@@ -217,8 +221,10 @@ WORKDIR /home/classifier
 #For quickly grabbing original source code
 RUN git clone https://github.com/marcella-benner/cnn-kerberossdr
 
-WORKDIR /home/classifier/cnn-kerberossdr
+WORKDIR /home/classifier/cnn-rtlsdr
 
 #For automatically executing scripts upon startup
-ENTRYPOINT ["python3"]
-CMD ["predict_scan.py"]
+#ENTRYPOINT ["python3"]
+#CMD ["predict_scan.py"]
+
+CMD /bin/bash
