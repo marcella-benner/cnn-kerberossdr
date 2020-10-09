@@ -214,6 +214,8 @@ RUN ./bazel-0.22.0-installer-linux-x86_64.sh --user
 
 WORKDIR /home/classifier
 
+RUN ls
+
 #For quickly grabbing original source code
 RUN git clone https://github.com/marcella-benner/cnn-kerberossdr
 

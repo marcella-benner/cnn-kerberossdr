@@ -1,0 +1,17 @@
+{
+  "pipeline": {
+    "name": "prep"
+  },
+  "standby": true,
+  "description": "A pipeline that performs data preparation.",
+  "transform": {
+    "cmd": [ "python3", "/prepare_data.py" ],
+    "image": "marcellabenner/prep"
+  },
+  "input": {
+    "pfs": {
+      "repo": "signals",
+      "glob": "/*"
+    }
+  }
+}

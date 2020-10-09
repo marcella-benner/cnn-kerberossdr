@@ -11,8 +11,7 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other 
 -v /path/to/testing_data/[signal_type1]:/home/classifier/cnn-kerberossdr/testing_data/[signal_type1] 
 -v /path/to/testing_data/[signal_type2]:/home/classifier/cnn-kerberossdr/testing_data/[signal_type2] 
--v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other 
-[ImageID]
+-v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other [ImageID]
 
 ### train:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
