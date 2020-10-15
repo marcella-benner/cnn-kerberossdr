@@ -32,3 +32,48 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/testing_data/[signal_type2]:/home/classifier/cnn-kerberossdr/testing_data/[signal_type2]  
 -v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other 
 -v /path/to/model:/home/classifier/cnn-kerberossdr/model [ImageID]
+
+
+## Pushing & Pulling from GitHub and Docker
+
+### GitHub
+#### Pulling
+git pull
+
+#### Pushing
+git add [*, file name] 
+
+git commit -m '[comment]'
+
+git push
+
+#### Clearing Cache
+Useful if git is not recognizing file changes
+git rm --cached path/to/repo
+git reset path/to/repo
+
+### Docker
+#### Pulling
+
+#### Pushing
+docker login
+
+docker images
+
+docker tag [imageID] [user]/[repo_name]:[tag]
+
+docker push [user]/[repo_name]
+
+#### Clearing Cache
+docker build --no-cache .
+
+### Pachyderm
+
+#### Add Data
+pachctl put file -r signals@master -f testing_data
+
+#### Create Repo
+pachctl create repo signals
+
+#### List Repos
+pachctl list repo

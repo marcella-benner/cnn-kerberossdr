@@ -1,0 +1,17 @@
+{
+    "pipeline": {
+      "name": "train"
+    },
+    "standby": true,
+    "description": "A pipeline that performs data preparation.",
+    "transform": {
+      "cmd": [ "python3", "/train.py" ],
+      "image": "marcellabenner/train"
+    },
+    "input": {
+      "pfs": {
+        "repo": "signals",
+        "glob": "/*"
+      }
+    }
+  }

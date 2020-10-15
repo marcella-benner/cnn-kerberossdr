@@ -9,7 +9,7 @@ import numpy as np
 
 batch_size = 16
 num_inputs = 2
-train_path = 'training_data'
+train_path = '/pfs/signals/training_data'
 
 classes = [d for d in os.listdir(train_path) if os.path.isdir(os.path.join(train_path, d))]
 num_classes = len(classes)
@@ -135,8 +135,8 @@ def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
 
 saver = tf.train.Saver()
 # loading pre-trained model to continue training
-if (os.path.exists('./model/checkpoint')):
-    saver.restore(session, tf.train.latest_checkpoint('./model'))
+if (os.path.exists('/pfs/out/model/checkpoint')):
+    saver.restore(session, tf.train.latest_checkpoint('/pfs/out/model'))
 
 for i in range(0, 25000):
 
@@ -153,4 +153,4 @@ for i in range(0, 25000):
         epoch = int(i / int(data.train.num_examples / batch_size))
 
         show_progress(epoch, feed_dict_tr, feed_dict_val, val_loss)
-        saver.save(session, './model/rtlsdr-model')
+        saver.save(session, '/pfs/out/model/rtlsdr-model')
