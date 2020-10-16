@@ -12,6 +12,6 @@
       "pfs": {
         "repo": "signals",
         "glob": "/*"
-      }
     }
   }
+}

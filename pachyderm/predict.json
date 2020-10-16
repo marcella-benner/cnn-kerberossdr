@@ -1,0 +1,17 @@
+{
+  "pipeline": {
+    "name": "predict"
+  },
+  "standby": true,
+  "description": "A pipeline that predicts the signal type.",
+  "transform": {
+    "cmd": [ "python3", "/predict_scan.py" ],
+    "image": "marcellabenner/predict"
+  },
+  "input": {
+    "pfs": {
+      "repo": "train",
+      "glob": "/*"
+    }
+  }
+}
