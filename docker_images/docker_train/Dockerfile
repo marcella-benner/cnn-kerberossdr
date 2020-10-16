@@ -220,5 +220,5 @@ RUN git clone https://github.com/marcella-benner/cnn-kerberossdr
 WORKDIR /home/classifier/cnn-kerberossdr/
 
 #For automatically executing scripts upon startup
-ENTRYPOINT ["python3"]
-CMD ["train.py"]
+#ENTRYPOINT ["python3"]
+#CMD ["train.py"]

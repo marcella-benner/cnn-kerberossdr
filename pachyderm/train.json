@@ -5,7 +5,7 @@
     "standby": true,
     "description": "A pipeline that performs data preparation.",
     "transform": {
-      "cmd": [ "python3", "/train.py" ],
+      "cmd": [ "python3", "train.py" ],
       "image": "marcellabenner/train"
     },
     "input": {
