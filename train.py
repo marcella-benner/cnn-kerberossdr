@@ -145,7 +145,7 @@ saver = tf.train.Saver()
 if (os.path.exists('/pfs/out/model/checkpoint')):
     saver.restore(session, tf.train.latest_checkpoint('/pfs/out/model'))
 
-for i in range(0, 25000):
+for i in range(0, 30):
     print("#########################for i in range")
     x_batch, y_true_batch, _, cls_batch = data.train.next_batch(batch_size)
     x_valid_batch, y_valid_batch, _, valid_cls_batch = data.valid.next_batch(batch_size)
