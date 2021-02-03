@@ -51,7 +51,7 @@ sdr.gain = 'auto'
 #Frequencies and classes below must be edited
 collect_samples(902200000, "sigfox")
 collect_samples(915000000, "lora")
-#collect_samples(908400000, "zwave")
+collect_samples(908400000, "zwave")
 
 # collect "other" class training data
 for freq in range(112000000, 174000000, 50000):
