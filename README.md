@@ -16,6 +16,7 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/testing_data/[signal_type2]:/home/classifier/cnn-kerberossdr/testing_data/[signal_type2] 
 -v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other [ImageID]
 
+#### prepare on pi
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
 -v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
@@ -36,6 +37,18 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other 
 -v /path/to/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 
+#### train on pi
+sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
+-v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
+-v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
+-v /home/pi/cnn-kerberossdr/training_data/zwave:/home/classifier/cnn-kerberossdr/training_data/zwave 
+-v /home/pi/cnn-kerberossdr/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other 
+-v /home/pi/cnn-kerberossdr/testing_data/lora:/home/classifier/cnn-kerberossdr/testing_data/lora 
+-v /home/pi/cnn-kerberossdr/testing_data/sigfox:/home/classifier/cnn-kerberossdr/testing_data/sigfox 
+-v /home/pi/cnn-kerberossdr/testing_data/zwave:/home/classifier/cnn-kerberossdr/testing_data/zwave 
+-v /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other
+-v /home/pi/cnn-kerberossdr/model:/home/classifier/cnn-kerberossdr/model [ImageID]
+
 ### predict:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /path/to/training_data/[signal_type1]:/home/classifier/cnn-kerberossdr/training_data/[signal_type1] 
@@ -46,7 +59,17 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other 
 -v /path/to/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 
-
+#### predict on pi
+sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
+-v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
+-v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
+-v /home/pi/cnn-kerberossdr/training_data/zwave:/home/classifier/cnn-kerberossdr/training_data/zwave 
+-v /home/pi/cnn-kerberossdr/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other 
+-v /home/pi/cnn-kerberossdr/testing_data/lora:/home/classifier/cnn-kerberossdr/testing_data/lora 
+-v /home/pi/cnn-kerberossdr/testing_data/sigfox:/home/classifier/cnn-kerberossdr/testing_data/sigfox 
+-v /home/pi/cnn-kerberossdr/testing_data/zwave:/home/classifier/cnn-kerberossdr/testing_data/zwave 
+-v /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other
+-v /home/pi/cnn-kerberossdr/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 ## Pushing & Pulling from GitHub and Docker
 
 ### GitHub

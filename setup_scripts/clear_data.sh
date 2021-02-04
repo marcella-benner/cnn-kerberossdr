@@ -3,9 +3,9 @@
 #edit to remove the signal classes you have
 
 cd training_data
-rm -f lora/* zwave/* other/*
+rm -f signal/* lora/* zwave/* other/*
 
 cd ..
 
 cd testing_data
-rm -rf lora/* zwave/* other/*
+rm -rf signal/* lora/* zwave/* other/*
