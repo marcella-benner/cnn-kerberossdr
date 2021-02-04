@@ -2,6 +2,9 @@
 
 Forked from commit 75ff7d33c84cd156745c42d98b472c71ba49059b of randaller/cnn-rtlsdr
 
+## Send files to the pi
+scp -r /Users/marcellabenner/Desktop/signalCode/cnn-kerberossdr/requirements.txt ubuntu@192.168.1.254:/home/ubuntu/test
+
 ## Commands to run each Docker image:
 
 ### prepare:
