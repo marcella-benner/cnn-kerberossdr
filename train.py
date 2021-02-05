@@ -15,6 +15,8 @@ classes = [d for d in os.listdir(train_path) if os.path.isdir(os.path.join(train
 num_classes = len(classes)
 
 data = dataset.read_train_sets(train_path, classes, validation_size=0.3)
+#maybe remove this
+np.load = ("data.npy" , allow_pickle=True)
 
 session = tf.Session()
 x = tf.placeholder(tf.float32, shape=[None, 96, 128, num_inputs], name='x')
