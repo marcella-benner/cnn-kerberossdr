@@ -16,7 +16,7 @@ num_classes = len(classes)
 
 data = dataset.read_train_sets(train_path, classes, validation_size=0.3)
 #maybe remove this
-mat = np.load("data.npy" , allow_pickle=True)
+mat = np.load("/home/classifier/cnn-kerberossdr/training_data/*" , allow_pickle=True)
 
 session = tf.Session()
 x = tf.placeholder(tf.float32, shape=[None, 96, 128, num_inputs], name='x')
