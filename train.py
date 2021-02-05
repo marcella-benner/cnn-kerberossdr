@@ -9,7 +9,7 @@ import numpy as np
 
 batch_size = 16
 num_inputs = 2
-train_path = '/training_data'
+train_path = '/home/classifier/cnn-kerberossdr/training_data'
 
 classes = [d for d in os.listdir(train_path) if os.path.isdir(os.path.join(train_path, d))]
 num_classes = len(classes)
