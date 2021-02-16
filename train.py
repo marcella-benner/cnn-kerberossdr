@@ -9,14 +9,12 @@ import numpy as np
 
 batch_size = 16
 num_inputs = 2
-train_path = '/home/classifier/cnn-kerberossdr/training_data'
+train_path = 'training_data'
 
 classes = [d for d in os.listdir(train_path) if os.path.isdir(os.path.join(train_path, d))]
 num_classes = len(classes)
 
 data = dataset.read_train_sets(train_path, classes, validation_size=0.3)
-#maybe remove this
-#mat = np.load("/home/classifier/cnn-kerberossdr/training_data/*" , allow_pickle=True)
 
 session = tf.Session()
 x = tf.placeholder(tf.float32, shape=[None, 96, 128, num_inputs], name='x')
@@ -36,12 +34,10 @@ fc_layer_size = 128
 
 
 def create_weights(shape):
-    print("#########################A")
     return tf.Variable(tf.truncated_normal(shape, stddev=0.05))
 
 
 def create_biases(size):
-#    print("#########################B")
     return tf.Variable(tf.constant(0.05, shape=[size]))
 
 
@@ -53,7 +49,6 @@ def create_convolutional_layer_tim(input, num_input_channels, conv_filter_size1,
     layer = tf.nn.max_pool(value=layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
     layer = tf.nn.relu(layer)
     # layer = tf.nn.dropout(layer, 0.5)
-#    print("#########################C")
     return layer
 
 
@@ -64,7 +59,6 @@ def create_convolutional_layer(input, num_input_channels, conv_filter_size, num_
     layer += biases
     layer = tf.nn.max_pool(value=layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
     layer = tf.nn.relu(layer)
-#    print("#########################D")
     return layer
 
 
@@ -72,7 +66,6 @@ def create_flatten_layer(layer):
     layer_shape = layer.get_shape()
     num_features = layer_shape[1:4].num_elements()
     layer = tf.reshape(layer, [-1, num_features])
-#    print("#########################E")
     return layer
 
 
@@ -82,7 +75,6 @@ def create_fc_layer(input, num_inputs, num_outputs, use_relu=True):
     layer = tf.matmul(input, weights) + biases
     if use_relu:
         layer = tf.nn.relu(layer)
-#    print("#########################F")
     return layer
 
 
@@ -91,12 +83,10 @@ layer_conv1 = create_convolutional_layer(input=x,
                                          num_input_channels=num_inputs,
                                          conv_filter_size=filter_size_conv1,
                                          num_filters=num_filters_conv1)
-
 layer_conv2 = create_convolutional_layer(input=layer_conv1,
                                          num_input_channels=num_filters_conv1,
                                          conv_filter_size=filter_size_conv2,
                                          num_filters=num_filters_conv2)
-
 layer_conv3 = create_convolutional_layer(input=layer_conv2,
                                          num_input_channels=num_filters_conv2,
                                          conv_filter_size=filter_size_conv3,
@@ -135,7 +125,6 @@ session.run(tf.global_variables_initializer())
 
 
 def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
-#    print("#########################show progress")
     acc = session.run(accuracy, feed_dict=feed_dict_train)
     val_acc = session.run(accuracy, feed_dict=feed_dict_validate)
     msg = "Epoch {0}, Train Acc: {1:>6.1%}, Val Acc: {2:>6.1%}, Val Loss: {3:.3f}"
@@ -144,11 +133,11 @@ def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
 
 saver = tf.train.Saver()
 # loading pre-trained model to continue training
-if (os.path.exists('/model/checkpoint')):
-    saver.restore(session, tf.train.latest_checkpoint('/model'))
+if (os.path.exists('checkpoint')):
+    saver.restore(session, tf.train.latest_checkpoint('./'))
 
 for i in range(0, 25000):
-#    print("#########################for i in range")
+
     x_batch, y_true_batch, _, cls_batch = data.train.next_batch(batch_size)
     x_valid_batch, y_valid_batch, _, valid_cls_batch = data.valid.next_batch(batch_size)
 
@@ -156,10 +145,10 @@ for i in range(0, 25000):
     feed_dict_val = {x: x_valid_batch, y_true: y_valid_batch}
 
     session.run(optimizer, feed_dict=feed_dict_tr)
-#    print("#########################session.run optimizer")
+
     if i % int(data.train.num_examples / batch_size) == 0:
         val_loss = session.run(cost, feed_dict=feed_dict_val)
         epoch = int(i / int(data.train.num_examples / batch_size))
 
         show_progress(epoch, feed_dict_tr, feed_dict_val, val_loss)
-        saver.save(session, '/model/rtlsdr-model')
+        saver.save(session, './rtlsdr-model')
