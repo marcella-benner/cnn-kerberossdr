@@ -41,7 +41,7 @@ def create_weights(shape):
 
 
 def create_biases(size):
-    print("#########################B")
+#    print("#########################B")
     return tf.Variable(tf.constant(0.05, shape=[size]))
 
 
@@ -53,7 +53,7 @@ def create_convolutional_layer_tim(input, num_input_channels, conv_filter_size1,
     layer = tf.nn.max_pool(value=layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
     layer = tf.nn.relu(layer)
     # layer = tf.nn.dropout(layer, 0.5)
-    print("#########################C")
+#    print("#########################C")
     return layer
 
 
@@ -64,7 +64,7 @@ def create_convolutional_layer(input, num_input_channels, conv_filter_size, num_
     layer += biases
     layer = tf.nn.max_pool(value=layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
     layer = tf.nn.relu(layer)
-    print("#########################D")
+#    print("#########################D")
     return layer
 
 
@@ -72,7 +72,7 @@ def create_flatten_layer(layer):
     layer_shape = layer.get_shape()
     num_features = layer_shape[1:4].num_elements()
     layer = tf.reshape(layer, [-1, num_features])
-    print("#########################E")
+#    print("#########################E")
     return layer
 
 
@@ -82,7 +82,7 @@ def create_fc_layer(input, num_inputs, num_outputs, use_relu=True):
     layer = tf.matmul(input, weights) + biases
     if use_relu:
         layer = tf.nn.relu(layer)
-    print("#########################F")
+#    print("#########################F")
     return layer
 
 
@@ -135,7 +135,7 @@ session.run(tf.global_variables_initializer())
 
 
 def show_progress(epoch, feed_dict_train, feed_dict_validate, val_loss):
-    print("#########################show progress")
+#    print("#########################show progress")
     acc = session.run(accuracy, feed_dict=feed_dict_train)
     val_acc = session.run(accuracy, feed_dict=feed_dict_validate)
     msg = "Epoch {0}, Train Acc: {1:>6.1%}, Val Acc: {2:>6.1%}, Val Loss: {3:.3f}"
@@ -147,8 +147,8 @@ saver = tf.train.Saver()
 if (os.path.exists('/model/checkpoint')):
     saver.restore(session, tf.train.latest_checkpoint('/model'))
 
-for i in range(0, 350):
-    print("#########################for i in range")
+for i in range(0, 25000):
+#    print("#########################for i in range")
     x_batch, y_true_batch, _, cls_batch = data.train.next_batch(batch_size)
     x_valid_batch, y_valid_batch, _, valid_cls_batch = data.valid.next_batch(batch_size)
 
@@ -156,7 +156,7 @@ for i in range(0, 350):
     feed_dict_val = {x: x_valid_batch, y_true: y_valid_batch}
 
     session.run(optimizer, feed_dict=feed_dict_tr)
-    print("#########################session.run optimizer")
+#    print("#########################session.run optimizer")
     if i % int(data.train.num_examples / batch_size) == 0:
         val_loss = session.run(cost, feed_dict=feed_dict_val)
         epoch = int(i / int(data.train.num_examples / batch_size))
