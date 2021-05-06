@@ -8,6 +8,9 @@ scp -r /Users/marcellabenner/Desktop/signalCode/cnn-kerberossdr/requirements.txt
 ## Commands to run each Docker image:
 
 ### prepare:
+sudo docker-compose --verbose up prepare
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /path/to/training_data/[signal_type1]:/home/classifier/cnn-kerberossdr/training_data/[signal_type1] 
 -v /path/to/training_data/[signal_type2]:/home/classifier/cnn-kerberossdr/training_data/[signal_type2] 
@@ -17,6 +20,9 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other [ImageID]
 
 #### prepare on pi
+sudo docker-compose --verbose up prepare
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
 -v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
@@ -28,6 +34,9 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other [ImageID]
 
 ### train:
+sudo docker-compose --verbose up train
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /path/to/training_data/[signal_type1]:/home/classifier/cnn-kerberossdr/training_data/[signal_type1] 
 -v /path/to/training_data/[signal_type2]:/home/classifier/cnn-kerberossdr/training_data/[signal_type2] 
@@ -38,6 +47,9 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 
 #### train on pi
+sudo docker-compose --verbose up train
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
 -v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
@@ -50,6 +62,9 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /home/pi/cnn-kerberossdr/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 
 ### predict:
+sudo docker-compose --verbose up predict
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /path/to/training_data/[signal_type1]:/home/classifier/cnn-kerberossdr/training_data/[signal_type1] 
 -v /path/to/training_data/[signal_type2]:/home/classifier/cnn-kerberossdr/training_data/[signal_type2] 
@@ -60,6 +75,9 @@ sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb
 -v /path/to/model:/home/classifier/cnn-kerberossdr/model [ImageID]
 
 #### predict on pi
+sudo docker-compose --verbose up predict
+
+accomplishes this:
 sudo docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 
 -v /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora 
 -v /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox 
