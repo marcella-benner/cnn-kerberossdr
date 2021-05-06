@@ -1,0 +1,44 @@
+version: '3'
+services:
+  prep:
+    image: prep:latest
+    privileged: true
+    volumes:
+    - /dev/bus/usb:/dev/bus/usb
+    - /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora
+    - /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox
+    - /home/pi/cnn-kerberossdr/training_data/zwave:/home/classifier/cnn-kerberossdr/training_data/zwave
+    - /home/pi/cnn-kerberossdr/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other
+    - /home/pi/cnn-kerberossdr/testing_data/lora:/home/classifier/cnn-kerberossdr/testing_data/lora
+    - /home/pi/cnn-kerberossdr/testing_data/sigfox:/home/classifier/cnn-kerberossdr/testing_data/sigfox
+    - /home/pi/cnn-kerberossdr/testing_data/zwave:/home/classifier/cnn-kerberossdr/testing_data/zwave
+    - /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other
+    privileged: true
+  train:
+    image: train:latest
+    privileged: true
+    volumes:
+    - /dev/bus/usb:/dev/bus/usb
+    - /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora
+    - /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox
+    - /home/pi/cnn-kerberossdr/training_data/zwave:/home/classifier/cnn-kerberossdr/training_data/zwave
+    - /home/pi/cnn-kerberossdr/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other
+    - /home/pi/cnn-kerberossdr/testing_data/lora:/home/classifier/cnn-kerberossdr/testing_data/lora
+    - /home/pi/cnn-kerberossdr/testing_data/sigfox:/home/classifier/cnn-kerberossdr/testing_data/sigfox
+    - /home/pi/cnn-kerberossdr/testing_data/zwave:/home/classifier/cnn-kerberossdr/testing_data/zwave
+    - /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other
+    - /home/pi/cnn-kerberossdr/model:/home/classifier/cnn-kerberossdr/model
+  predict:
+    image: predict:latest
+    privileged: true
+    volumes:
+    - /dev/bus/usb:/dev/bus/usb
+    - /home/pi/cnn-kerberossdr/training_data/lora:/home/classifier/cnn-kerberossdr/training_data/lora
+    - /home/pi/cnn-kerberossdr/training_data/sigfox:/home/classifier/cnn-kerberossdr/training_data/sigfox
+    - /home/pi/cnn-kerberossdr/training_data/zwave:/home/classifier/cnn-kerberossdr/training_data/zwave
+    - /home/pi/cnn-kerberossdr/training_data/other:/home/classifier/cnn-kerberossdr/training_data/other
+    - /home/pi/cnn-kerberossdr/testing_data/lora:/home/classifier/cnn-kerberossdr/testing_data/lora
+    - /home/pi/cnn-kerberossdr/testing_data/sigfox:/home/classifier/cnn-kerberossdr/testing_data/sigfox
+    - /home/pi/cnn-kerberossdr/testing_data/zwave:/home/classifier/cnn-kerberossdr/testing_data/zwave
+    - /home/pi/cnn-kerberossdr/testing_data/other:/home/classifier/cnn-kerberossdr/testing_data/other
+    - /home/pi/cnn-kerberossdr/model:/home/classifier/cnn-kerberossdr/model
